@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smiley Face Canvas</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ebe6ea;
+        }
+        canvas {
+            border: 2px solid #98eda6;
+            background-color: #72d883;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="smileyCanvas" width="400" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById('smileyCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Draw the face
+        function drawFace() {
+            ctx.strokeStyle = '#000000'; 
+            ctx.lineWidth = 3; // Set line width for the outline
+            ctx.beginPath();
+            ctx.arc(200, 200, 100, 0, Math.PI * 2, true); // Face outline
+            ctx.stroke(); 
+            ctx.closePath();
+
+            // Draw face fill
+            ctx.fillStyle = '#ffcc00'; 
+            ctx.beginPath();
+            ctx.arc(200, 200, 100, 0, Math.PI * 2, true); // Face
+            ctx.fill(); // Fill the face
+            ctx.closePath();
+        }
+
+        // Draw the eyes
+        function drawEyes() {
+            ctx.fillStyle = '#000000'; 
+            ctx.beginPath();
+            ctx.arc(170, 180, 10, 0, Math.PI * 2, true); // Left eye
+            ctx.arc(230, 180, 10, 0, Math.PI * 2, true); // Right eye
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        // Draw the smile
+        function drawSmile() {
+            ctx.strokeStyle = '#000000'; 
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(200, 220, 50, 0, Math.PI, false); // Smile
+            ctx.stroke();
+            ctx.closePath();
+            
+        }
+
+          // Draw the nose
+          function drawNose() {
+            ctx.strokeStyle = '#000000'; 
+            ctx.beginPath();
+            ctx.moveTo(200,200);
+            ctx.lineTo(200,230);
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+        function drawRouge() {
+            ctx.fillStyle = '#df8ecd'; // Black color
+            ctx.beginPath();
+            ctx.arc(150, 220, 15, 0, Math.PI * 2, true); 
+            ctx.arc(250, 220, 15, 0, Math.PI * 2, true); 
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        // Draw text
+        function drawText() {
+            ctx.fillStyle = '#000000';
+            ctx.font = '24px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('The Canvas brought me to life!', 200, 350);
+        }
+
+        // Call the functions to draw
+        drawFace();
+        drawEyes();
+        drawRouge();
+        drawSmile();
+        drawNose();
+        drawText();
+
+    </script>
+</body>
+</html>
